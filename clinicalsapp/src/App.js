@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { Switch } from 'react-router-dom';
+
+import { Route } from 'react-router-dom';
+import Home from './Components/Home';
+import CollectClinicals from './Components/CollectClinicals';
+import AddPatient from './Components/AddPatient';
+import AnalyzeData from './Components/AnalyzeData';
+import ChartGenerator from './Components/ChartGenerator';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Switch>
+        <Route exact path="/" component={Home}></Route>
+        <Route exact path="/patientDetails/:patientId" component={CollectClinicals}></Route>
+        <Route exact path="/addPatient" component={AddPatient}></Route>
+        <Route exact path="/analyze/:patientId" component={AnalyzeData}></Route>
+        <Route exact path="/chart/:componentName/:patientId" component={ChartGenerator}></Route>
+      </Switch>
+
     </div>
   );
 }
